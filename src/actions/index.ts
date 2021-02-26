@@ -2,13 +2,13 @@ import axios from "axios";
 import { Dispatch } from "redux";
 import { ActionTypes } from "./types";
 
-interface Todo {
+export interface Todo {
   id: number;
   title: string;
   completed: boolean;
 }
 
-interface FetchTodosAction {
+export interface FetchTodosAction {
   type: ActionTypes.fetchTodos;
   payload: Todo[];
 }
@@ -21,7 +21,8 @@ export const fetchTodos = () => {
   // so have to return a function instead of an action
   // dispatch comes from redux; arbitrarily dispatch actions as we please
   return async (dispatch: Dispatch) => {
-    const response = await axios.get<Todo[]>(url); // crazy...
+    const response = await axios.get<Todo[]>(url);
+    // <Todo[]> optional but much better explanation
 
     // optional generic, but great at typeguarding
     // useful when you have really complicated actions
