@@ -6,8 +6,13 @@ interface AppProps {
   color?: string; // ? for optional
 }
 
+// Functional Component Syntax: huge for the future
+// const App = (props: AppProps): JSX.Element => {
+//   return <div>{props.color}</div>;
+// };
+
 class App extends React.Component<AppProps> {
-  state = { counter: 1 };
+  state = { counter: 1 }; // TLDR: don't do constructors in Typescript + React, confusing enough;
 
   onIncrement = (): void => {
     this.setState({ counter: this.state.counter + 1 });
@@ -28,4 +33,4 @@ class App extends React.Component<AppProps> {
   }
 }
 
-ReactDOM.render(<App />, document.querySelector("#root"));
+ReactDOM.render(<App color={"red"} />, document.querySelector("#root"));
